@@ -57,7 +57,13 @@ void configureDeploymentRepository(Project project) {
 		if (project.hasProperty("deploymentRepository")) {
 			publishing.repositories.maven {
 				it.url = project.property("deploymentRepository")
+				it.allowInsecureProtocol = true
 				it.name = "deployment"
+				it.credentials {
+					it.username = project.property("ossrhUsername")
+					it.password = project.property("ossrhPassword")
+				}
+
 			}
 		}
 	}

@@ -55,6 +55,8 @@ task api(type: Javadoc) {
 	source moduleProjects.collect { project ->
 		project.sourceSets.main.allJava
 	}
+	// 排除特定包Add commentMore actions
+	excludes = ['org/springframework/core/metrics/jfr/**']
 	maxMemory = "1024m"
 	destinationDir = file("$buildDir/docs/javadoc")
 }
